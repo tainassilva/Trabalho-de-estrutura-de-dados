@@ -5,7 +5,7 @@ public class BubbleSort {
     boolean houveTrocas;
 
     // Ordenando números em ordem crescente
-    public void bubbleSortOrdemCrescente(int[] v) {
+    public void bubbleSortCrescente(int[] v) {
         int vetorAuxCresc;
         for (int i = 0; i < v.length - 1; i++) {
             System.out.println("Iteracao: " + (i + 1));
@@ -27,7 +27,7 @@ public class BubbleSort {
     }
 
     // Ordenando números em ordem decrescente
-    public void bubbleSortOrdemDecrescente(int[] v) {
+    public void bubbleSortDecrescente(int[] v) {
         int vetorAuxDecres;
         for (int i = 0; i < v.length - 1; i++) {
             System.out.println("Iteracao: " + (i + 1));
