@@ -5,7 +5,8 @@ public class QuickSort {
     public void quickSortCrescente(int[] vetor, int inicio, int fim) {
         if (inicio < fim) {
             // Particiona o vetor e obtém o índice do pivô
-            int indicePivo = particionarCrescente(vetor, inicio, fim);
+            int[] iteracoes = {0}; // Contador de iterações
+            int indicePivo = particionarCrescente(vetor, inicio, fim, iteracoes);
 
             // Chama recursivamente o Quicksort para as submatrizes à esquerda e à direita do pivô
             quickSortCrescente(vetor, inicio, indicePivo - 1);
@@ -17,7 +18,8 @@ public class QuickSort {
     public void quickSortDecrescente(int[] vetor, int inicio, int fim) {
         if (inicio < fim) {
             // Particiona o vetor e obtém o índice do pivô
-            int indicePivo = particionarDecrescente(vetor, inicio, fim);
+            int[] iteracoes = {0}; // Contador de iterações
+            int indicePivo = particionarDecrescente(vetor, inicio, fim, iteracoes);
 
             // Chama recursivamente o Quicksort para as submatrizes à esquerda e à direita do pivô
             quickSortDecrescente(vetor, inicio, indicePivo - 1);
@@ -26,7 +28,7 @@ public class QuickSort {
     }
 
     // Função auxiliar para particionar o vetor em ordem crescente
-    private int particionarCrescente(int[] vetor, int inicio, int fim) {
+    private int particionarCrescente(int[] vetor, int inicio, int fim, int[] iteracoes) {
         int pivo = vetor[fim]; // Escolhe o último elemento como pivô
         int i = inicio - 1; // Índice do menor elemento
 
@@ -39,6 +41,7 @@ public class QuickSort {
                 vetor[i] = vetor[j];
                 vetor[j] = temp;
             }
+            iteracoes[0]++; // Incrementa o contador de iterações
         }
 
         // Troca vetor[i+1] com o pivô
@@ -53,7 +56,7 @@ public class QuickSort {
     }
 
     // Função auxiliar para particionar o vetor em ordem decrescente
-    private int particionarDecrescente(int[] vetor, int inicio, int fim) {
+    private int particionarDecrescente(int[] vetor, int inicio, int fim, int[] iteracoes) {
         int pivo = vetor[fim]; // Escolhe o último elemento como pivô
         int i = inicio - 1; // Índice do maior elemento
 
@@ -66,6 +69,7 @@ public class QuickSort {
                 vetor[i] = vetor[j];
                 vetor[j] = temp;
             }
+            iteracoes[0]++; // Incrementa o contador de iterações
         }
 
         // Troca vetor[i+1] com o pivô
@@ -74,7 +78,7 @@ public class QuickSort {
         vetor[fim] = temp;
 
         // Mostra a iteração atual
-        System.out.println("Iteração: "+ i + Arrays.toString(vetor));
+        System.out.println("Iteração: " + Arrays.toString(vetor));
 
         return i + 1; // Retorna o índice do pivô após a partição
     }

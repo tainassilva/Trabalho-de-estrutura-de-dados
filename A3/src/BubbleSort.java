@@ -6,6 +6,7 @@ public class BubbleSort {
 
     // Ordenando números em ordem crescente
     public void bubbleSortCrescente(int[] v) {
+        long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
         int vetorAuxCresc;
         for (int i = 0; i < v.length - 1; i++) {
             System.out.println("Iteracao: " + (i + 1));
@@ -19,15 +20,19 @@ public class BubbleSort {
                 }
                 System.out.println(Arrays.toString(v));
             }
-             //Se não houve troca, a lista está ordenada
-//            if (!houveTrocas) {
-//                break;
-//                }
+            // Se não houve troca, a lista está ordenada
+            if (!houveTrocas) {
+                break;
+            }
         }
+        long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+        long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+        System.out.println("Tempo de execução do Bubble Sort Crescente: " + duracaoTotal+ " milissegundos");
     }
 
     // Ordenando números em ordem decrescente
     public void bubbleSortDecrescente(int[] v) {
+        long startTime = System.currentTimeMillis(); // Captura o tempo inicial
         int vetorAuxDecres;
         for (int i = 0; i < v.length - 1; i++) {
             System.out.println("Iteracao: " + (i + 1));
@@ -42,9 +47,12 @@ public class BubbleSort {
                 System.out.println(Arrays.toString(v));
             }
             // Se não houve troca, a lista está ordenada
-//            if (!houveTrocas) {
-//                break;
-//            }
+            if (!houveTrocas) {
+                break;
+            }
         }
+        long endTime = System.currentTimeMillis(); // Captura o tempo final
+        long duration = endTime - startTime; // Calcula a duração da execução
+        System.out.println("Tempo de execução do Bubble Sort Decrescente: " + duration + " milissegundos");
     }
 }
