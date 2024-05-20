@@ -53,6 +53,6 @@ public class BubbleSort {
         }
         long endTime = System.currentTimeMillis(); // Captura o tempo final
         long duration = endTime - startTime; // Calcula a duração da execução
-        System.out.println("Tempo de execução do Bubble Sort Decrescente: " + duration + " milissegundos");
+        System.out.println("Tempo de execução: " + duration + " milissegundos");
     }
 }

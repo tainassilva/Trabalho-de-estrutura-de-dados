@@ -15,9 +15,7 @@ public class AplicandoOrdenacao {
             int[] vetor = gerarVetorAleatorio(tamanhoVetor);
 
             int tipoDeOrdenacao = escolherTipoOrdenacao(entrada);
-            long duracaoOrdenacao = executarOrdenacao(estruturaOrdenacao, tipoDeOrdenacao, vetor);
-
-            System.out.println("Tempo de execução em milissegundos: " + duracaoOrdenacao / 1_000_000);
+            executarOrdenacao(estruturaOrdenacao, tipoDeOrdenacao, vetor);
 
             while (true) {
                 System.out.print("Deseja ordenar com mais algum tipo de algoritmo de ordenação?\n" +
@@ -61,7 +59,7 @@ public class AplicandoOrdenacao {
             try {
                 System.out.print("Digite o tamanho do vetor entre os valores citados abaixo: \n100\n1.000\n10.000\n100.000\n1.000.000\n");
                 tamanhoVetor = entrada.nextInt();
-                if (tamanhoVetor == 10 || tamanhoVetor == 1000 || tamanhoVetor == 10000 || tamanhoVetor == 100000 || tamanhoVetor == 1000000) {
+                if (tamanhoVetor == 100 || tamanhoVetor == 1000 || tamanhoVetor == 10000 || tamanhoVetor == 100000 || tamanhoVetor == 1000000) {
                     break;
                 } else {
                     System.out.println("Por favor, insira um número das opções citadas: \n100\n1.000\n10.000\n100.000\n1.000.000.");
@@ -99,8 +97,7 @@ public class AplicandoOrdenacao {
         return tipoDeOrdenacao;
     }
 
-    public static long executarOrdenacao(int metodo, int tipoOrdenacao, int[] vetor) {
-        long tempoInicial = System.nanoTime();
+    public static void executarOrdenacao(int metodo, int tipoOrdenacao, int[] vetor) {
         switch (metodo) {
             case 1:
                 BubbleSort bubble = new BubbleSort();
@@ -142,47 +139,109 @@ public class AplicandoOrdenacao {
                     Arrays.sort(vetor); // Ordena o vetor em ordem crescente
                     insertion.insertionSortCrescente(vetor);
                 } else if (tipoOrdenacao == 4) {
-                    Arrays.sort(vetor); // Ordena o vetor em ordem crescente
+                    Arrays.sort(vetor); // Ordena o vetor em
+                    // Ordena o vetor em ordem crescente
                     inverterVetor(vetor); // Inverte o vetor para ordem decrescente
                     insertion.insertionSortDecrescente(vetor);
                     break;
                 }
-                    case 4:
-                        QuickSort quick = new QuickSort();
-                        if (tipoOrdenacao == 1) {
-                            quick.quickSortCrescente(vetor, 0, vetor.length - 1);
-                        }
-                        else if (tipoOrdenacao == 2) {
-                            quick.quickSortDecrescente(vetor, 0, vetor.length - 1);
-                        }else if (tipoOrdenacao == 3) {
-                            Arrays.sort(vetor); // Ordena o vetor em ordem crescente
-                            quick.quickSortCrescente(vetor, 0, vetor.length - 1);
-                        } else if (tipoOrdenacao == 4) {
-                            Arrays.sort(vetor); // Ordena o vetor em ordem crescente
-                            inverterVetor(vetor); // Inverte o vetor para ordem decrescente
-                            quick.quickSortDecrescente(vetor, 0, vetor.length - 1);
-                        }
-                        break;
-                    case 5:
-                        MergeSort merge = new MergeSort();
-                        if (tipoOrdenacao == 1) {
-                            merge.mergeSortCrescente(0, vetor.length, vetor);
-                        } else if (tipoOrdenacao == 2){
-                            merge.mergeSortDecrescente(0, vetor.length, vetor);
-                            } else if (tipoOrdenacao == 3) {
-                            Arrays.sort(vetor); // Ordena o vetor em ordem crescente
-                            merge.mergeSortCrescente(0, vetor.length, vetor);
-                        } else if (tipoOrdenacao == 4) {
-                            Arrays.sort(vetor); // Ordena o vetor em ordem crescente
-                            inverterVetor(vetor); // Inverte o vetor para ordem decrescente
-                            merge.mergeSortDecrescente(0, vetor.length, vetor);
-                        }
-                        break;
+            case 4:
+                QuickSort quick = new QuickSort();
+                if (tipoOrdenacao == 1) {
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+                    quick.quickSortCrescente(vetor, 0, vetor.length - 1);
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
+                } else if (tipoOrdenacao == 2) {
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+                    quick.quickSortDecrescente(vetor, 0, vetor.length - 1);
+
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
+                } else if (tipoOrdenacao == 3) {
+                    Arrays.sort(vetor); // Ordena o vetor em ordem crescente
+
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+                    quick.quickSortCrescente(vetor, 0, vetor.length - 1);
+
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
+                } else if (tipoOrdenacao == 4) {
+                    Arrays.sort(vetor); // Ordena o vetor em ordem crescente
+                    inverterVetor(vetor); // Inverte o vetor para ordem decrescente
+
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+                    quick.quickSortDecrescente(vetor, 0, vetor.length - 1);
+
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
                 }
-                long tempoFinal = System.nanoTime();
-                return tempoFinal - tempoInicial;
+                break;
+            case 5:
+                MergeSort merge = new MergeSort();
+                if (tipoOrdenacao == 1) {
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+                    merge.mergeSortCrescente(0, vetor.length, vetor);
+
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
+
+                } else if (tipoOrdenacao == 2) {
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+                    merge.mergeSortDecrescente(0, vetor.length, vetor);
+
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
+                } else if (tipoOrdenacao == 3) {
+                    Arrays.sort(vetor); // Ordena o vetor em ordem crescente
+
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+                    merge.mergeSortCrescente(0, vetor.length, vetor);
+
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
+
+                } else if (tipoOrdenacao == 4) {
+
+                    Arrays.sort(vetor); // Ordena o vetor em ordem crescente
+                    inverterVetor(vetor); // Inverte o vetor para ordem decrescente
+
+                    long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+                    merge.mergeSortDecrescente(0, vetor.length, vetor);
+
+                    long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+                    long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+                    System.out.println("Tempo de execução do Insertion Sort Crescente: " + duracaoTotal + " milissegundos");
+                    System.out.println("Vetor ordenado crescente: " + Arrays.toString(vetor));
+                }
+                break;
         }
-    public static void inverterVetor ( int[] vetor) {
+
+        System.out.println("Vetor ordenado:\n" + Arrays.toString(vetor));
+    }
+
+    public static void inverterVetor(int[] vetor) {
         int n = vetor.length;
         for (int i = 0; i < n / 2; i++) {
             int temp = vetor[i];
@@ -190,5 +249,4 @@ public class AplicandoOrdenacao {
             vetor[n - 1 - i] = temp;
         }
     }
-
 }
