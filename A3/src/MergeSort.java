@@ -9,8 +9,25 @@ public class MergeSort {
 
     // Método principal para ordenar em ordem crescente
     public void mergeSortCrescente(int inicio, int fim, int[] v) {
-        Iteracoes iteracoes = new Iteracoes(); // Contador de iterações
-        mergeSortCrescente(inicio, fim, v, iteracoes);
+        Iteracoes iteracao = new Iteracoes(); // Contador de iterações
+
+        long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+        mergeSortCrescente(inicio, fim, v, iteracao);
+
+        long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+        long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+        // Exibição do tempo de execução
+        if (duracaoTotal >= 60000) {
+            double duracaoEmMinutos = duracaoTotal / 60000.0;
+            System.out.println("Tempo de execução : " + duracaoEmMinutos + " minutos");
+        } else if (duracaoTotal >= 1000) {
+            double duracaoEmSegundos = duracaoTotal / 1000.0;
+            System.out.println("Tempo de execução : " + duracaoEmSegundos + " segundos");
+        } else {
+            System.out.println("Tempo de execução : " + duracaoTotal + " milissegundos");
+        }
+        System.out.println("O método Merge Sort em ordem crescente obteve " + iteracao.valor + " iterações");
     }
 
     // Método principal para ordenar em ordem crescente com contador de iterações
@@ -21,14 +38,30 @@ public class MergeSort {
             mergeSortCrescente(meio, fim, v, iteracoes);
             intercalarCrescente(inicio, meio, fim, v);
             iteracoes.valor++; // Incrementa o contador de iterações
-            System.out.println("Iteração " + iteracoes.valor + ": " + Arrays.toString(v));
         }
     }
 
     // Método principal para ordenar em ordem decrescente
     public void mergeSortDecrescente(int inicio, int fim, int[] v) {
-        Iteracoes iteracoes = new Iteracoes(); // Contador de iterações
-        mergeSortDecrescente(inicio, fim, v, iteracoes);
+        Iteracoes iteracao = new Iteracoes(); // Contador de iterações
+        mergeSortDecrescente(inicio, fim, v, iteracao);
+        long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+        mergeSortDecrescente(inicio, fim, v, iteracao);
+
+        long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+        long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+        // Exibição do tempo de execução
+        if (duracaoTotal >= 60000) {
+            double duracaoEmMinutos = duracaoTotal / 60000.0;
+            System.out.println("Tempo de execução : " + duracaoEmMinutos + " minutos");
+        } else if (duracaoTotal >= 1000) {
+            double duracaoEmSegundos = duracaoTotal / 1000.0;
+            System.out.println("Tempo de execução : " + duracaoEmSegundos + " segundos");
+        } else {
+            System.out.println("Tempo de execução : " + duracaoTotal + " milissegundos");
+        }
+        System.out.println("O método Merge Sort em ordem decrescente obteve " + iteracao.valor + " iterações");
     }
 
     // Método principal para ordenar em ordem decrescente com contador de iterações
@@ -39,7 +72,6 @@ public class MergeSort {
             mergeSortDecrescente(meio, fim, v, iteracoes);
             intercalarDecrescente(inicio, meio, fim, v);
             iteracoes.valor++; // Incrementa o contador de iterações
-            System.out.println("Iteração " + iteracoes.valor + ": " + Arrays.toString(v));
         }
     }
 
