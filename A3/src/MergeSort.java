@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class MergeSort {
 
     // Classe auxiliar para armazenar o contador de iterações
@@ -11,23 +9,15 @@ public class MergeSort {
     public void mergeSortCrescente(int inicio, int fim, int[] v) {
         Iteracoes iteracao = new Iteracoes(); // Contador de iterações
 
-        long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
 
         mergeSortCrescente(inicio, fim, v, iteracao);
 
-        long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+        long tempoFinal = System.nanoTime(); // Captura o tempo final
         long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
-        // Exibição do tempo de execução
-        if (duracaoTotal >= 60000) {
-            double duracaoEmMinutos = duracaoTotal / 60000.0;
-            System.out.println("Tempo de execução : " + duracaoEmMinutos + " minutos");
-        } else if (duracaoTotal >= 1000) {
-            double duracaoEmSegundos = duracaoTotal / 1000.0;
-            System.out.println("Tempo de execução : " + duracaoEmSegundos + " segundos");
-        } else {
-            System.out.println("Tempo de execução : " + duracaoTotal + " milissegundos");
-        }
+
         System.out.println("O método Merge Sort em ordem crescente obteve " + iteracao.valor + " iterações");
+        exibirTempoExecucao(duracaoTotal);
     }
 
     // Método principal para ordenar em ordem crescente com contador de iterações
@@ -44,24 +34,16 @@ public class MergeSort {
     // Método principal para ordenar em ordem decrescente
     public void mergeSortDecrescente(int inicio, int fim, int[] v) {
         Iteracoes iteracao = new Iteracoes(); // Contador de iterações
-        mergeSortDecrescente(inicio, fim, v, iteracao);
-        long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+
+        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
 
         mergeSortDecrescente(inicio, fim, v, iteracao);
 
-        long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+        long tempoFinal = System.nanoTime(); // Captura o tempo final
         long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
-        // Exibição do tempo de execução
-        if (duracaoTotal >= 60000) {
-            double duracaoEmMinutos = duracaoTotal / 60000.0;
-            System.out.println("Tempo de execução : " + duracaoEmMinutos + " minutos");
-        } else if (duracaoTotal >= 1000) {
-            double duracaoEmSegundos = duracaoTotal / 1000.0;
-            System.out.println("Tempo de execução : " + duracaoEmSegundos + " segundos");
-        } else {
-            System.out.println("Tempo de execução : " + duracaoTotal + " milissegundos");
-        }
+
         System.out.println("O método Merge Sort em ordem decrescente obteve " + iteracao.valor + " iterações");
+        exibirTempoExecucao(duracaoTotal);
     }
 
     // Método principal para ordenar em ordem decrescente com contador de iterações
@@ -146,6 +128,22 @@ public class MergeSort {
 
         for (i = inicio; i < fim; i++) {
             v[i] = auxiliar[i - inicio];
+        }
+    }
+
+    // Método auxiliar para exibir o tempo de execução
+    private void exibirTempoExecucao(long duracaoTotal) {
+        if (duracaoTotal >= 60000000000L) {
+            double duracaoEmMinutos = duracaoTotal / 60000000000.0;
+            System.out.printf("Tempo de execução: %.2f minutos%n", duracaoEmMinutos);
+        } else if (duracaoTotal >= 1000000000) {
+            double duracaoEmSegundos = duracaoTotal / 1000000000.0;
+            System.out.printf("Tempo de execução: %.2f segundos%n", duracaoEmSegundos);
+        } else if (duracaoTotal >= 1000000) {
+            double duracaoEmMilissegundos = duracaoTotal / 1000000.0;
+            System.out.printf("Tempo de execução: %.2f milissegundos%n", duracaoEmMilissegundos);
+        } else {
+            System.out.printf("Tempo de execução: %d nanosegundos%n", duracaoTotal);
         }
     }
 }

@@ -1,32 +1,22 @@
-import java.util.Arrays;
-
 public class QuickSort {
 
     // Classe auxiliar para armazenar o contador de iterações
     static class Iteracoes {
         int valor = 0;
     }
-    public void quickSortCrescente(int []vetor, int inicio, int fim) {
+
+    public void quickSortCrescente(int[] vetor, int inicio, int fim) {
         Iteracoes iteracao = new Iteracoes(); // Contador de iterações
 
-        long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
 
         quickSortCrescente(vetor, inicio, fim, iteracao);
 
-        long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+        long tempoFinal = System.nanoTime(); // Captura o tempo final
         long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
 
         System.out.println("O método de ordenação Quick Sort em ordem crescente obteve " + iteracao.valor + " iterações");
-        // Exibição do tempo de execução
-        if (duracaoTotal >= 60000) {
-            double duracaoEmMinutos = duracaoTotal / 60000.0;
-            System.out.println("Tempo de execução : " + duracaoEmMinutos + " minutos");
-        } else if (duracaoTotal >= 1000) {
-            double duracaoEmSegundos = duracaoTotal / 1000.0;
-            System.out.println("Tempo de execução : " + duracaoEmSegundos + " segundos");
-        } else {
-            System.out.println("Tempo de execução : " + duracaoTotal + " milissegundos");
-        }
+        exibirTempoExecucao(duracaoTotal);
     }
 
     // Implementação do algoritmo Quicksort para ordenação crescente
@@ -42,9 +32,7 @@ public class QuickSort {
         }
     }
 
-
-
-        // Função auxiliar para particionar o vetor em ordem crescente
+    // Função auxiliar para particionar o vetor em ordem crescente
     private int particionarCrescente(int[] vetor, int inicio, int fim) {
         int pivo = vetor[fim]; // Escolhe o último elemento como pivô
         int i = inicio - 1; // Índice do menor elemento
@@ -68,28 +56,18 @@ public class QuickSort {
         return i + 1; // Retorna o índice do pivô após a partição
     }
 
-    // Função auxiliar para particionar o vetor em ordem decrescente
     public void quickSortDecrescente(int[] vetor, int inicio, int fim) {
         Iteracoes iteracao = new Iteracoes(); // Contador de iterações
 
-        long tempoInicial = System.currentTimeMillis(); // Captura o tempo inicial
+        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
 
         quickSortDecrescente(vetor, inicio, fim, iteracao);
 
-        long tempoFinal = System.currentTimeMillis(); // Captura o tempo final
+        long tempoFinal = System.nanoTime(); // Captura o tempo final
         long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
 
         System.out.println("O método de ordenação Quick Sort em ordem decrescente obteve " + iteracao.valor + " iterações");
-        // Exibição do tempo de execução
-        if (duracaoTotal >= 60000) {
-            double duracaoEmMinutos = duracaoTotal / 60000.0;
-            System.out.println("Tempo de execução : " + duracaoEmMinutos + " minutos");
-        } else if (duracaoTotal >= 1000) {
-            double duracaoEmSegundos = duracaoTotal / 1000.0;
-            System.out.println("Tempo de execução : " + duracaoEmSegundos + " segundos");
-        } else {
-            System.out.println("Tempo de execução : " + duracaoTotal + " milissegundos");
-        }
+        exibirTempoExecucao(duracaoTotal);
     }
 
     // Implementação do algoritmo Quicksort para ordenação decrescente
@@ -129,4 +107,19 @@ public class QuickSort {
         return i + 1; // Retorna o índice do pivô após a partição
     }
 
+    // Método auxiliar para exibir o tempo de execução
+    private void exibirTempoExecucao(long duracaoTotal) {
+        if (duracaoTotal >= 60000000000L) {
+            double duracaoEmMinutos = duracaoTotal / 60000000000.0;
+            System.out.printf("Tempo de execução: %.2f minutos%n", duracaoEmMinutos);
+        } else if (duracaoTotal >= 1000000000) {
+            double duracaoEmSegundos = duracaoTotal / 1000000000.0;
+            System.out.printf("Tempo de execução: %.2f segundos%n", duracaoEmSegundos);
+        } else if (duracaoTotal >= 1000000) {
+            double duracaoEmMilissegundos = duracaoTotal / 1000000.0;
+            System.out.printf("Tempo de execução: %.2f milissegundos%n", duracaoEmMilissegundos);
+        } else {
+            System.out.printf("Tempo de execução: %d nanosegundos%n", duracaoTotal);
+        }
+    }
 }

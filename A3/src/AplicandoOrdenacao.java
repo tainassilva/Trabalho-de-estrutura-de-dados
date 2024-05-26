@@ -174,7 +174,7 @@ public class AplicandoOrdenacao {
                 break;
         }
 
-        System.out.println("Vetor ordenado:\n" + Arrays.toString(vetor));
+        System.out.println("Vetor ordenado!");
     }
     public static void inverterVetor(int[] vetor) {
         int n = vetor.length;
