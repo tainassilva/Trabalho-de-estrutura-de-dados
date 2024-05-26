@@ -76,7 +76,6 @@ public class AplicandoOrdenacao {
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = random.nextInt(1000);
         }
-        System.out.println("Vetor original:\n" + Arrays.toString(vetor));
         return vetor;
     }
     public static int escolherTipoOrdenacao(Scanner entrada) {
@@ -145,16 +144,16 @@ public class AplicandoOrdenacao {
             case 4:
                 QuickSort quick = new QuickSort();
                 if (tipoOrdenacao == 1) {
-                    quick.quickSortCrescente(vetor, 0, vetor.length - 1);
+                    quick.quickSortCrescente(vetor);
                 } else if (tipoOrdenacao == 2) {
-                    quick.quickSortDecrescente(vetor, 0, vetor.length - 1);
+                    quick.quickSortDecrescente(vetor);
                 } else if (tipoOrdenacao == 3) {
                     Arrays.sort(vetor); // Ordena o vetor em ordem crescente
-                    quick.quickSortCrescente(vetor, 0, vetor.length - 1);
+                    quick.quickSortCrescente(vetor);
                 } else if (tipoOrdenacao == 4) {
                     Arrays.sort(vetor); // Ordena o vetor em ordem crescente
                     inverterVetor(vetor); // Inverte o vetor para ordem decrescente
-                    quick.quickSortDecrescente(vetor, 0, vetor.length - 1);
+                    quick.quickSortDecrescente(vetor);
                 }
                 break;
             case 5:
