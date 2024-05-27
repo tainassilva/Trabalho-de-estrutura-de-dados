@@ -135,8 +135,7 @@ public class AplicandoOrdenacao {
                     Arrays.sort(vetor); // Ordena o vetor em ordem crescente
                     insertion.insertionSortCrescente(vetor);
                 } else if (tipoOrdenacao == 4) {
-                    Arrays.sort(vetor); // Ordena o vetor em
-                    // Ordena o vetor em ordem crescente
+                    Arrays.sort(vetor); // Ordena o vetor em ordem crescente
                     inverterVetor(vetor); // Inverte o vetor para ordem decrescente
                     insertion.insertionSortDecrescente(vetor);
                     break;

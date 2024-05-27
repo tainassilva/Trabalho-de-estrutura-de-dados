@@ -2,9 +2,8 @@ public class SelectionSort {
 
     int iteracao = 0;
 
-    // Implementação do algoritmo Selection Sort em ordem crescente
     public void selectionSortCrescente(int[] vetor) {
-        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
+        long tempoInicial = System.nanoTime();
 
         // Percorre todo o vetor
         for (int i = 0; i < vetor.length - 1; i++) {
@@ -14,7 +13,7 @@ public class SelectionSort {
             // Encontra o índice do menor elemento não ordenado
             for (int j = i + 1; j < vetor.length; j++) {
                 if (vetor[j] < vetor[indiceMenor]) {
-                    indiceMenor = j;
+                    indiceMenor = j; // Atualiza o índice do menor elemento
                 }
             }
             // Troca o menor elemento com o primeiro elemento não ordenado
@@ -23,17 +22,15 @@ public class SelectionSort {
             vetor[i] = temp;
         }
 
-        long tempoFinal = System.nanoTime(); // Captura o tempo final
-        long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+        long tempoFinal = System.nanoTime();
+        long duracaoTotal = tempoFinal - tempoInicial;
 
         System.out.println("O método de ordenação Selection Sort em ordem crescente obteve " + iteracao + " iterações");
         exibirTempoExecucao(duracaoTotal);
     }
 
-    // Implementação do algoritmo Selection Sort em ordem decrescente
     public void selectionSortDecrescente(int[] vetor) {
-        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
-
+        long tempoInicial = System.nanoTime();
         // Percorre todo o vetor
         for (int i = 0; i < vetor.length - 1; i++) {
             iteracao = i + 1;
@@ -42,7 +39,7 @@ public class SelectionSort {
             // Encontra o índice do maior elemento não ordenado
             for (int j = i + 1; j < vetor.length; j++) {
                 if (vetor[j] > vetor[indiceMaior]) {
-                    indiceMaior = j;
+                    indiceMaior = j; // Atualiza o índice do maior elemento
                 }
             }
 
@@ -52,15 +49,15 @@ public class SelectionSort {
             vetor[i] = temp;
         }
 
-        long tempoFinal = System.nanoTime(); // Captura o tempo final
-        long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+        long tempoFinal = System.nanoTime();
+        long duracaoTotal = tempoFinal - tempoInicial;
 
         System.out.println("O método de ordenação Selection Sort em ordem decrescente obteve " + iteracao + " iterações");
         exibirTempoExecucao(duracaoTotal);
     }
 
-    // Método auxiliar para exibir o tempo de execução
     private void exibirTempoExecucao(long duracaoTotal) {
+        // Exibe a duração em minutos, segundos, milissegundos ou nanosegundos, conforme apropriado
         if (duracaoTotal >= 60000000000L) {
             double duracaoEmMinutos = duracaoTotal / 60000000000.0;
             System.out.printf("Tempo de execução: %.2f minutos%n", duracaoEmMinutos);
@@ -73,26 +70,5 @@ public class SelectionSort {
         } else {
             System.out.printf("Tempo de execução: %d nanosegundos%n", duracaoTotal);
         }
-    }
-
-    public static void main(String[] args) {
-        SelectionSort selectionSort = new SelectionSort();
-
-        // Criação de um array grande para garantir que o tempo de execução seja significativo
-        int tamanho = 10000;
-        int[] arrayCrescente = new int[tamanho];
-        int[] arrayDecrescente = new int[tamanho];
-
-        // Inicializando o array com valores aleatórios
-        for (int i = 0; i < tamanho; i++) {
-            arrayCrescente[i] = (int) (Math.random() * tamanho);
-            arrayDecrescente[i] = (int) (Math.random() * tamanho);
-        }
-
-        // Ordenação em ordem crescente
-        selectionSort.selectionSortCrescente(arrayCrescente);
-
-        // Ordenação em ordem decrescente
-        selectionSort.selectionSortDecrescente(arrayDecrescente);
     }
 }

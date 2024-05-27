@@ -1,15 +1,18 @@
 public class BubbleSort {
-    // Método para ordenação em ordem crescente
     public void bubbleSortCrescente(int[] vetor) {
-        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
-        int vetorAuxCresc;
+        long tempoInicial = System.nanoTime();
+        int vetorAuxCresc; // Variável auxiliar para troca de elementos
         int iteracao = 0;
 
+        // Loop externo para controlar o número de passagens pelo vetor
         for (int i = 0; i < vetor.length - 1; i++) {
             iteracao = i + 1;
-            //boolean houveTrocas = false; // Redefinir a variável a cada iteração do loop externo
+            //boolean houveTrocas = false;
+
+            // Loop interno para realizar a comparação e troca de elementos
             for (int j = 1; j < (vetor.length - i); j++) {
-                if (vetor[j - 1] > vetor[j]) {
+                if (vetor[j - 1] > vetor[j]) { // Verifica se o indice anterior é maior que o seguinte
+                    // Troca os elementos sempre levando o maior para o fim do vetor
                     vetorAuxCresc = vetor[j - 1];
                     vetor[j - 1] = vetor[j];
                     vetor[j] = vetorAuxCresc;
@@ -22,24 +25,28 @@ public class BubbleSort {
 //            }
         }
 
-        long tempoFinal = System.nanoTime(); // Captura o tempo final
-        long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+        long tempoFinal = System.nanoTime();
+        long duracaoTotal = tempoFinal - tempoInicial;
 
         System.out.println("O método de ordenação Bubble Sort em ordem crescente obteve " + iteracao + " iterações");
         exibirTempoExecucao(duracaoTotal);
     }
 
-    // Método para ordenação em ordem decrescente
     public void bubbleSortDecrescente(int[] v) {
-        long tempoInicial = System.nanoTime(); // Captura o tempo inicial
-        int vetorAuxDecres;
+        long tempoInicial = System.nanoTime();
+        int vetorAuxDecres; // Variável auxiliar para troca de elementos
         int iteracao = 0;
 
+        // Loop externo para controlar o número de passagens pelo vetor
         for (int i = 0; i < v.length - 1; i++) {
             iteracao = i + 1;
-            //boolean houveTrocas = false; // Redefinir a variável a cada iteração do loop externo
+
+            //boolean houveTrocas = false;
+
+            // Loop interno para realizar a comparação e troca de elementos
             for (int j = 1; j < (v.length - i); j++) {
-                if (v[j - 1] < v[j]) {  // Alteração da condição para ordem decrescente
+                if (v[j - 1] < v[j]) { // Verifica índice anterior é menor que o seguinte
+                    // Troca os elementos, sempre levando o menor para o inicio do vetor
                     vetorAuxDecres = v[j - 1];
                     v[j - 1] = v[j];
                     v[j] = vetorAuxDecres;
@@ -52,15 +59,15 @@ public class BubbleSort {
 //            }
         }
 
-        long tempoFinal = System.nanoTime(); // Captura o tempo final
-        long duracaoTotal = tempoFinal - tempoInicial; // Calcula a duração da execução
+        long tempoFinal = System.nanoTime();
+        long duracaoTotal = tempoFinal - tempoInicial;
 
         System.out.println("O método de ordenação Bubble Sort em ordem decrescente obteve " + iteracao + " iterações");
         exibirTempoExecucao(duracaoTotal);
     }
 
-    // Método auxiliar para exibir o tempo de execução
     private void exibirTempoExecucao(long duracaoTotal) {
+        // Exibe a duração em minutos, segundos, milissegundos ou nanosegundos, conforme apropriado
         if (duracaoTotal >= 60000000000L) {
             double duracaoEmMinutos = duracaoTotal / 60000000000.0;
             System.out.printf("Tempo de execução: %.2f minutos%n", duracaoEmMinutos);
